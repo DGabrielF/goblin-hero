@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnov7yojiket4"]
+
+[ext_resource type="Script" path="res://systems/mob_spawner.gd" id="1_ca8im"]
+[ext_resource type="PackedScene" uid="uid://c8yycr3vewjre" path="res://enemies/sheep.tscn" id="2_qq4gt"]
+[ext_resource type="PackedScene" uid="uid://b35u2wn8tm8xr" path="res://enemies/torch_blue.tscn" id="3_p3q18"]
+[ext_resource type="PackedScene" uid="uid://dwigedr27ccoc" path="res://enemies/torch_leader.tscn" id="4_p266k"]
+[ext_resource type="PackedScene" uid="uid://dpape2gy5mchi" path="res://enemies/torch_purple.tscn" id="5_hgcbt"]
+[ext_resource type="PackedScene" uid="uid://yhipafhgjii4" path="res://enemies/torch_red.tscn" id="6_qhwij"]
+
+[sub_resource type="Curve2D" id="Curve2D_3euwu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -676, -420, 0, 0, 0, 0, -502, -425, 0, 0, 0, 0, -313, -429, 0, 0, 0, 0, -120, -427, 0, 0, 0, 0, 82, -429, 0, 0, 0, 0, 238, -411, 0, 0, 0, 0, 397, -423, 0, 0, 0, 0, 528, -417, 0, 0, 0, 0, 669, -429, 0, 0, 0, 0, 678, -309, 0, 0, 0, 0, 678, -222, 0, 0, 0, 0, 690, -99, 0, 0, 0, 0, 681, 14, 0, 0, 0, 0, 684, 140, 0, 0, 0, 0, 702, 263, 0, 0, 0, 0, 669, 359, 0, 0, 0, 0, 645, 416, 0, 0, 0, 0, 463, 434, 0, 0, 0, 0, 298, 398, 0, 0, 0, 0, 202, 428, 0, 0, 0, 0, 37, 392, 0, 0, 0, 0, -98, 422, 0, 0, 0, 0, -251, 398, 0, 0, 0, 0, -412, 416, 0, 0, 0, 0, -559, 377, 0, 0, 0, 0, -661, 398, 0, 0, 0, 0, -697, 275, 0, 0, 0, 0, -691, 86, 0, 0, 0, 0, -652, 2, 0, 0, 0, 0, -652, -165, 0, 0, 0, 0, -682, -291, 0, 0, 0, 0, -739, -339, 0, 0, 0, 0, -733, -495, 0, 0, 0, 0, -556, -501, 0, 0, 0, 0, -433, -507, 0, 0, 0, 0, -206, -507, 0, 0, 0, 0, -26, -507, 0, 0, 0, 0, 190, -513, 0, 0, 0, 0, 313, -519, 0, 0, 0, 0, 504, -516, 0, 0, 0, 0, 672, -519, 0, 0, 0, 0, 732, -417, 0, 0, 0, 0, 768, -291, 0, 0, 0, 0, 765, -165, 0, 0, 0, 0, 759, 17, 0, 0, 0, 0, 756, 203, 0, 0, 0, 0, 762, 362, 0, 0, 0, 0, 723, 470, 0, 0, 0, 0, 397, 467, 0, 0, 0, 0, 202, 461, 0, 0, 0, 0, -80, 455, 0, 0, 0, 0, -299, 467, 0, 0, 0, 0, -580, 455, 0, 0, 0, 0, -727, 467, 0, 0, 0, 0, -772, 317, 0, 0, 0, 0, -772, 197, 0, 0, 0, 0, -763, -16, 0, 0, 0, 0, -787, -210, 0, 0, 0, 0, -811, -396, 0, 0, 0, 0, -769, -423)
+}
+point_count = 60
+
+[node name="MobSpawner" type="Node2D"]
+position = Vector2(208, 197)
+script = ExtResource("1_ca8im")
+creatures = Array[PackedScene]([ExtResource("2_qq4gt"), ExtResource("3_p3q18"), ExtResource("4_p266k"), ExtResource("5_hgcbt"), ExtResource("6_qhwij")])
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_3euwu")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+unique_name_in_owner = true
+position = Vector2(-676, -420)
+rotation = -0.0287277
+
+[node name="_Timer_311772" type="Timer" parent="Path2D/PathFollow2D"]
+wait_time = 0.2
+one_shot = true

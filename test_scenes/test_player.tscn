@@ -1,0 +1,24 @@
+[gd_scene load_steps=10 format=3 uid="uid://b6vadt1r4eqgi"]
+
+[ext_resource type="PackedScene" uid="uid://bnov7yojiket4" path="res://systems/mob_spawner.tscn" id="2_0uagd"]
+[ext_resource type="PackedScene" uid="uid://dgir8ndok8hmd" path="res://player/player.tscn" id="2_e12af"]
+[ext_resource type="PackedScene" uid="uid://yhipafhgjii4" path="res://enemies/torch_red.tscn" id="3_5agcq"]
+[ext_resource type="PackedScene" uid="uid://c8yycr3vewjre" path="res://enemies/sheep.tscn" id="3_34reg"]
+[ext_resource type="PackedScene" uid="uid://dwigedr27ccoc" path="res://enemies/torch_leader.tscn" id="3_m0i3u"]
+[ext_resource type="PackedScene" uid="uid://b35u2wn8tm8xr" path="res://enemies/torch_blue.tscn" id="4_v5ouw"]
+[ext_resource type="PackedScene" uid="uid://dpape2gy5mchi" path="res://enemies/torch_purple.tscn" id="5_7a5ik"]
+[ext_resource type="PackedScene" uid="uid://dirhjdby5sgd6" path="res://effects/rage_bless.tscn" id="8_qghog"]
+[ext_resource type="PackedScene" uid="uid://ceic6x4ve4vj2" path="res://UI/game_ui.tscn" id="9_28n8t"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_e12af")]
+position = Vector2(208, 195)
+bless_damage = 7
+bless_interval = 10.0
+bless_scene = ExtResource("8_qghog")
+
+[node name="MobSpawner" parent="." instance=ExtResource("2_0uagd")]
+creatures = Array[PackedScene]([ExtResource("3_34reg"), ExtResource("4_v5ouw"), ExtResource("3_m0i3u"), ExtResource("5_7a5ik"), ExtResource("3_5agcq")])
+
+[node name="GameUI" parent="." instance=ExtResource("9_28n8t")]
