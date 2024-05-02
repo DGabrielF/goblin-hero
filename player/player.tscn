@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dirhjdby5sgd6" path="res://effects/rage_bless.tscn" id="2_siu7x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t867i"]
+radius = 7.0
 height = 47.0
 
 [sub_resource type="Animation" id="Animation_rh3xt"]
@@ -171,7 +172,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yu84m"]
-radius = 37.0
+radius = 30.0
 height = 140.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3pgjx"]
@@ -187,13 +188,13 @@ bless_scene = ExtResource("2_siu7x")
 death_effect = ExtResource("2_qugnl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -28)
+position = Vector2(0, -30)
 texture = ExtResource("1_rtpyk")
 hframes = 7
 vframes = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, 2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_t867i")
 debug_color = Color(0, 0.6, 0.701961, 0.2)
@@ -207,6 +208,7 @@ autoplay = "idle"
 [node name="AttackArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, 2)
 rotation = 4.71239
 scale = Vector2(1.25, 1.25)
 shape = SubResource("CapsuleShape2D_yu84m")
