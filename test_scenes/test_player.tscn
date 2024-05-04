@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bnov7yojiket4" path="res://systems/mob_spawner.tscn" id="2_0uagd"]
 [ext_resource type="PackedScene" uid="uid://dgir8ndok8hmd" path="res://player/player.tscn" id="2_e12af"]
-[ext_resource type="PackedScene" uid="uid://yhipafhgjii4" path="res://enemies/torch_red.tscn" id="3_5agcq"]
-[ext_resource type="PackedScene" uid="uid://c8yycr3vewjre" path="res://enemies/sheep.tscn" id="3_34reg"]
-[ext_resource type="PackedScene" uid="uid://dwigedr27ccoc" path="res://enemies/torch_leader.tscn" id="3_m0i3u"]
-[ext_resource type="PackedScene" uid="uid://b35u2wn8tm8xr" path="res://enemies/torch_blue.tscn" id="4_v5ouw"]
-[ext_resource type="PackedScene" uid="uid://dpape2gy5mchi" path="res://enemies/torch_purple.tscn" id="5_7a5ik"]
+[ext_resource type="PackedScene" path="res://enemies/torch_red.tscn" id="3_5agcq"]
+[ext_resource type="PackedScene" path="res://enemies/sheep.tscn" id="3_34reg"]
+[ext_resource type="PackedScene" path="res://enemies/torch_leader.tscn" id="3_m0i3u"]
+[ext_resource type="PackedScene" uid="uid://b35u2wn8tm8xr" path="res://enemies/torchs/torch_blue.tscn" id="4_v5ouw"]
+[ext_resource type="PackedScene" uid="uid://ygt1k5mjm4km" path="res://enemies/torchs/torch_purple.tscn" id="5_7a5ik"]
 [ext_resource type="PackedScene" uid="uid://dirhjdby5sgd6" path="res://effects/rage_bless.tscn" id="8_qghog"]
 [ext_resource type="PackedScene" uid="uid://ceic6x4ve4vj2" path="res://UI/game_ui.tscn" id="9_28n8t"]
 

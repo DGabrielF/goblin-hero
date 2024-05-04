@@ -4,6 +4,7 @@ extends Node2D
 
 @onready var attack_area = $AttackArea
 @onready var damage_digit_marker = $DamageDigitMarker
+@onready var animation_player: AnimationPlayer  = $AnimationPlayer
 
 @export_category("Attack")
 @export var basic_attack_damage: int = 2
@@ -18,6 +19,7 @@ extends Node2D
 var attack_cooldown: float = 0.0
 var damage_digit_prefab: PackedScene
 var max_health: int
+var is_attacking: bool = false
 
 
 func _ready():
@@ -29,7 +31,21 @@ func _process(delta):
 		attack_cooldown -= delta
 	else:
 		attack_cooldown = attack_speed
-		deal_damage()
+		animate_attack()
+
+func animate_attack():
+	var bodies = attack_area.get_overlapping_bodies()
+	for body in bodies:
+		if body.is_in_group("player"):
+			var player: Player = body
+			var difference = player.position - position
+			if abs(difference.x) > abs(difference.y):
+				animation_player.play("attack_side")
+			else:
+				if difference.y > 0:
+					animation_player.play("attack_down")
+				else:
+					animation_player.play("attack_up")
 
 func deal_damage():
 	var bodies = attack_area.get_overlapping_bodies()
@@ -76,7 +92,6 @@ func die():
 
 func drop_item():
 	for i in drop_items.size():
-		var dice = randf()
 		if randf() <= drop_chances[i]:
 			var droped_item = drop_items[i].instantiate()
 			droped_item.position = position
@@ -86,5 +101,7 @@ func is_dead():
 	return health<=0
 
 func given_experience():
-	return int(basic_attack_damage * attack_speed) + max_health
+	return int(basic_attack_damage / attack_speed) + max_health
 
+func toggle_is_attacking():
+	is_attacking = not is_attacking

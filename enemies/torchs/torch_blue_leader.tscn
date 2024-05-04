@@ -1,0 +1,227 @@
+[gd_scene load_steps=16 format=3 uid="uid://bojuiuo3atdsl"]
+
+[ext_resource type="Script" path="res://enemies/enemy.gd" id="1_l7o3u"]
+[ext_resource type="PackedScene" uid="uid://dhqs0t2owxxtg" path="res://effects/death.tscn" id="2_aabxy"]
+[ext_resource type="PackedScene" uid="uid://cak5avgo1lqrd" path="res://items/meat.tscn" id="3_wg3sp"]
+[ext_resource type="PackedScene" uid="uid://due8402adhul2" path="res://items/golden_meat.tscn" id="4_qtt5t"]
+[ext_resource type="Texture2D" uid="uid://bdds1y7f4cmdj" path="res://addons/Tiny Swords/Factions/Goblins/Troops/Torch/Blue/Torch_Blue.png" id="4_thh5p"]
+[ext_resource type="Script" path="res://enemies/behaviors/follow_player.gd" id="5_7kg65"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dv0uv"]
+radius = 7.0
+height = 41.0
+
+[sub_resource type="Animation" id="Animation_tcfum"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n6atq"]
+resource_name = "attack_down"
+length = 0.65
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(5, 3)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"toggle_is_attacking"
+}, {
+"args": [],
+"method": &"deal_damage"
+}, {
+"args": [],
+"method": &"toggle_is_attacking"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_br8b7"]
+resource_name = "attack_side"
+length = 0.65
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"toggle_is_attacking"
+}, {
+"args": [],
+"method": &"deal_damage"
+}, {
+"args": [],
+"method": &"toggle_is_attacking"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_oju66"]
+resource_name = "attack_up"
+length = 0.65
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 4), Vector2i(1, 4), Vector2i(2, 4), Vector2i(3, 4), Vector2i(4, 4), Vector2i(5, 4)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"toggle_is_attacking"
+}, {
+"args": [],
+"method": &"deal_damage"
+}, {
+"args": [],
+"method": &"toggle_is_attacking"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mkd2u"]
+resource_name = "idle"
+length = 0.65
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yiiov"]
+resource_name = "run"
+length = 0.55
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sanfo"]
+_data = {
+"RESET": SubResource("Animation_tcfum"),
+"attack_down": SubResource("Animation_n6atq"),
+"attack_side": SubResource("Animation_br8b7"),
+"attack_up": SubResource("Animation_oju66"),
+"idle": SubResource("Animation_mkd2u"),
+"run": SubResource("Animation_yiiov")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_re1ck"]
+radius = 50.0
+height = 140.0
+
+[node name="TorchBlueLeader" type="CharacterBody2D" groups=["enemies"]]
+scale = Vector2(1.2, 1.2)
+motion_mode = 1
+script = ExtResource("1_l7o3u")
+basic_attack_damage = 8
+attack_speed = 1.9
+health = 25
+death_effect = ExtResource("2_aabxy")
+drop_items = Array[PackedScene]([ExtResource("3_wg3sp"), ExtResource("4_qtt5t")])
+drop_chances = Array[float]([0.13, 0.05])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_dv0uv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sanfo")
+}
+autoplay = "idle"
+
+[node name="FollowPlayer" type="Node" parent="."]
+script = ExtResource("5_7kg65")
+speed = 1.25
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, -14)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_re1ck")
+
+[node name="DamageDigitMarker" type="Marker2D" parent="."]
+position = Vector2(0, -60.8333)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -28)
+texture = ExtResource("4_thh5p")
+hframes = 7
+vframes = 5

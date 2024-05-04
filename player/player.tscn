@@ -99,7 +99,6 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_s0yd1"]
 resource_name = "attack_up"
 length = 0.55
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
